@@ -20,7 +20,7 @@ subnet_name = "hdinsight" # Change this to the name of the subnet you want to us
 
 subnet_prefix = "10.0.1.0/24" # Change this to the address space you want to use for the subnet, must be contained within vnet address_space
 
-service_endpoints = ["Microsoft.Sql","Microsoft.Storage"] # Change this to the specific service endpoints you want to enable.
+service_endpoints = ["Microsoft.Sql", "Microsoft.Storage"] # Change this to the specific service endpoints you want to enable.
 
 # NSGs
 source_address_prefixes_mgmt = ["168.61.49.99", "23.99.5.239", "168.61.48.131", "138.91.141.162"] # Required for all HDInsight Vnets
