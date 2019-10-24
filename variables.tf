@@ -1,18 +1,18 @@
 # General 
 variable "resource_prefix" {
-  type = "string"
+  type        = string
   description = "The prefix used for all resources in this example"
   default     = "hdi-secure-vnet"
 }
 
 variable "location" {
-  type = "string"
+  type        = string
   description = "The Azure Region in which the resources in this example should exist"
   default     = "West US 2"
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map(string)
   description = "Any tags which should be assigned to the resources in this plan"
 
   default = {
@@ -24,25 +24,25 @@ variable "tags" {
 
 # VNet 
 variable "address_space" {
-  type = "string"
+  type        = string
   description = "The address space that is used by the virtual network."
   default     = "10.0.0.0/16"
 }
 
 variable "dns_servers" {
-  type = "list"
+  type        = list(string)
   description = "The DNS servers to be used by the virtual network"
   default     = []
 }
 
 variable "subnet_prefix" {
-  type = "string"
+  type        = string
   description = "The address prefix to use for the subnet."
   default     = "10.0.1.0/24"
 }
 
 variable "subnet_name" {
-  type = "string"
+  type        = string
   description = "The name to use for the subnet."
   default     = "hdi-secure"
 }
@@ -51,9 +51,9 @@ variable "subnet_name" {
 # Docs: https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview
 
 variable "service_endpoints" {
-  type = "list"
+  type        = list(string)
   description = "The service endoints to enable on the subnet."
-  default     = ["Microsoft.Sql","Microsoft.Storage"]
+  default     = ["Microsoft.Sql", "Microsoft.Storage"]
 }
 
 # NSGs
@@ -61,19 +61,19 @@ variable "service_endpoints" {
 # Docs: https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1
 
 variable "source_address_prefixes_mgmt" {
-  type        = "list"
+  type        = list(string)
   description = "Used in NSG rule to enable management traffic for HD Insight"
   default     = ["168.61.49.99", "23.99.5.239", "168.61.48.131", "138.91.141.162"]
 }
 
 variable "source_address_prefix_resolver" {
-  type = "string"
+  type        = string
   description = "Used in NSG rule to enable Azure Resolver traffic to HD Insight"
   default     = "168.63.129.16"
 }
 
 variable "source_address_prefixes_mgmt_region" {
-  type        = "list"
+  type        = list(string)
   description = "Used in NSG rule to enable management traffic for HD Insight"
   default = [
     "23.102.235.122",
@@ -131,34 +131,36 @@ variable "source_address_prefixes_mgmt_region" {
     "13.64.254.98",
     "23.101.196.19",
     "52.175.211.210",
-    "52.175.222.222"
+    "52.175.222.222",
   ]
 }
 
 # Azure Storage Accounts  for HDInsight
 variable "storage_account_count" {
   description = "The number of storage acccounts you want to deploy"
-  default = 1
+  default     = 1
 }
+
 variable "account_replication_type" {
-  type = "string"
+  type        = string
   description = "Account type for storage accounts ('LRS', 'GRS' or 'RAGRS'.  'ZRS' probably does not apply to HD Insight)"
-  default = "LRS"
+  default     = "LRS"
 }
 
 # Azure SQL Databases for HDInsight Hive Metastore or Oozie
 variable "azuresqldb_databases" {
-  type = "list"
+  type        = list(string)
   description = "The names of the Azure SQL Databases to create. Leave this empty if you don't want to create any."
-  default = ["hivemetastoredb","ooziedb"]
+  default     = ["hivemetastoredb", "ooziedb"]
 }
 
 variable "sql_server_admin_user" {
-  type = "string"
+  type        = string
   description = "The admin user for the Azure SQL Database server."
 }
 
 variable "sql_server_admin_password" {
-  type = "string"
+  type        = string
   description = "The password for the Azure SQL Database admin user."
 }
+
