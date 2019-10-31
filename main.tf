@@ -108,7 +108,7 @@ resource "azurerm_storage_account" "storage" {
   account_tier             = "Standard"
   access_tier              = "Hot"
   account_replication_type = var.account_replication_type
-/*
+  /*
   network_rules {
     ip_rules                   = ["127.0.0.1"]
     virtual_network_subnet_ids = [azurerm_subnet.subnet.id]
